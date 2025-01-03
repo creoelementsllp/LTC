@@ -8,7 +8,7 @@ const assetsToCache = [
     '/wp-content/plugins/creo/icon-512x512.png',
     '/wp-content/plugins/creo/js/sw-register.js',
     '/wp-content/plugins/creo/assets.json',
-];
+]; 
 
 // Install event: Caches essential files
 self.addEventListener('install', (event) => {
