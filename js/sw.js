@@ -1,7 +1,7 @@
 const CACHE_NAME = 'creo-pwa-cache-v1';
 const assetsToCache = [
     '/',
-    '/index.html', // You can add more assets here that need to be cached
+    '/index.html',
     '/wp-content/themes/oceanwp/style.css',
     '/offline.html',
     '/wp-content/plugins/creo/icon-192x192.png',
@@ -26,16 +26,15 @@ self.addEventListener('fetch', (event) => {
             if (cachedResponse) {
                 return cachedResponse; // Serve cached content if available
             }
-            
+
             // If no cache is found, return the offline page
             return caches.match('/offline.html');
         }).catch(() => {
-            // If there’s an issue with cache or fetch, serve the offline page as a fallback
+            // If there's an issue with cache or fetch, serve the offline page as a fallback
             return caches.match('/offline.html');
         })
     );
 });
-
 
 // Activate event: Clean up old caches
 self.addEventListener('activate', (event) => {

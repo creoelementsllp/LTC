@@ -1,14 +1,14 @@
 let deferredPrompt;
 
 // Register the service worker
-if ("serviceWorker" in navigator) {
+if ('serviceWorker' in navigator) {
     navigator.serviceWorker
-        .register("/wp-content/plugins/creo/js/sw.js")
+        .register('/wp-content/plugins/creo/js/sw.js')
         .then(() => {
-            console.log("Service Worker Registered");
+            console.log('Service Worker Registered');
         })
         .catch((error) => {
-            console.error("Service Worker Registration Failed:", error);
+            console.error('Service Worker Registration Failed:', error);
         });
 }
 
@@ -19,20 +19,16 @@ function isIOS() {
 
 // Show the install prompt for Android/Windows or iOS instructions
 if (isIOS()) {
-    // iOS-specific prompt: Display an instruction for adding the app to the home screen
     window.addEventListener('load', () => {
         const installPopup = document.getElementById("install-pwa-popup-ios");
         if (installPopup) {
-            installPopup.style.display = "block";
+            installPopup.style.display = "block"; // Show the iOS install popup
         }
     });
 } else {
-    // For Android/Windows, use the deferred install prompt
-    window.addEventListener('beforeinstallprompt', (e) => {
-        // Prevent the mini-infobar from appearing on mobile
+    window.addEventListener("beforeinstallprompt", (e) => {
+        // Prevent the default mini-infobar from appearing
         e.preventDefault();
-
-        // Save the event to trigger later
         deferredPrompt = e;
 
         // Show the install PWA popup
@@ -43,13 +39,13 @@ if (isIOS()) {
     });
 }
 
-// Handle the "Install" button click
+// Handle "Install" button click for Android/Windows
 document.getElementById("install-pwa-button")?.addEventListener("click", () => {
     if (deferredPrompt) {
-        // Show the native install prompt for Android/Windows
+        // Trigger the install prompt
         deferredPrompt.prompt();
-        
-        // Wait for the user's response to the prompt
+
+        // Wait for the user's response
         deferredPrompt.userChoice
             .then((choiceResult) => {
                 if (choiceResult.outcome === "accepted") {
@@ -59,8 +55,8 @@ document.getElementById("install-pwa-button")?.addEventListener("click", () => {
                 }
                 deferredPrompt = null; // Reset the deferred prompt
             });
-        
-        // Hide the popup after the user responds
+
+        // Hide the popup after interaction
         const installPopup = document.getElementById("install-pwa-popup");
         if (installPopup) {
             installPopup.style.display = "none";
@@ -68,7 +64,7 @@ document.getElementById("install-pwa-button")?.addEventListener("click", () => {
     }
 });
 
-// Handle the "Dismiss" button click to hide the popup
+// Handle dismiss button clicks to hide the popup
 document.getElementById("dismiss-pwa-popup")?.addEventListener("click", () => {
     const installPopup = document.getElementById("install-pwa-popup");
     if (installPopup) {
@@ -76,10 +72,10 @@ document.getElementById("dismiss-pwa-popup")?.addEventListener("click", () => {
     }
 });
 
-// iOS specific dismiss
+// iOS-specific dismiss
 document.getElementById("dismiss-pwa-popup-ios")?.addEventListener("click", () => {
-    const installPopup = document.getElementById("install-pwa-popup-ios");
-    if (installPopup) {
-        installPopup.style.display = "none"; // Hide the iOS-specific popup if dismissed
+    const installPopupIOS = document.getElementById("install-pwa-popup-ios");
+    if (installPopupIOS) {
+        installPopupIOS.style.display = "none"; // Hide the iOS-specific popup if dismissed
     }
 });
