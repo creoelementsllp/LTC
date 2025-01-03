@@ -1,6 +1,7 @@
 <?php
 // Include the autoload file from Composer (make sure it's included if you're using Composer)
-require 'vendor/autoload.php'; // Adjust the path if needed
+require plugin_dir_path(__FILE__) . '../vendor/autoload.php';  // Adjust path if needed
+
 
 use Minishlink\WebPush\WebPush;
 use Minishlink\WebPush\VAPID;
