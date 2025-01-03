@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Creo   
+Plugin Name: Creo  
 Description: Our Plugin with PWA Functionality
 Version: 1.1
 Author: Vinay Dangodra
@@ -18,6 +18,7 @@ foreach (glob($shortcodes_dir . '*.php') as $file) {
     require_once $file;
 }
 require_once plugin_dir_path(__FILE__) . 'cart_count.php';
+
 // Enqueue assets (Swiper and custom scripts)
 function enqueue_swiper_assets() {
     wp_enqueue_style('swiper-css', 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css');
@@ -38,34 +39,6 @@ function enqueue_latest_arrivals_styles() {
     );
 }
 add_action('wp_enqueue_scripts', 'enqueue_latest_arrivals_styles');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Enqueue PWA-related scripts and manifest
 function creo_pwa_enqueue_scripts() {
@@ -89,7 +62,6 @@ function register_service_worker() {
     </script>';
 }
 add_action('wp_footer', 'register_service_worker');
-
 
 // Generate the manifest.json file
 function creo_pwa_generate_manifest() {
@@ -119,15 +91,13 @@ function creo_pwa_generate_manifest() {
 }
 add_action('init', 'creo_pwa_generate_manifest');
 
-
-
-
+// Enqueue PWA install script
 function enqueue_pwa_install_script() {
     wp_enqueue_script('sw-register', plugin_dir_url(__FILE__) . 'js/sw-register.js', array(), null, true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_pwa_install_script');
 
-
+// Add install PWA popup
 function add_install_pwa_popup() {
     echo '
     <div id="install-pwa-popup" style="display: none; position: fixed; bottom: 20px; left: 20px; background-color: white; padding: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000; border-radius: 8px;">
@@ -138,8 +108,7 @@ function add_install_pwa_popup() {
 }
 add_action('wp_footer', 'add_install_pwa_popup');
 
-
-
+// Add iOS-specific install PWA popup
 function add_ios_install_pwa_popup() {
     echo '
     <div id="install-pwa-popup-ios" style="display: none; position: fixed; bottom: 20px; left: 20px; background-color: white; padding: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000; border-radius: 8px;">
@@ -148,4 +117,3 @@ function add_ios_install_pwa_popup() {
     </div>';
 }
 add_action('wp_footer', 'add_ios_install_pwa_popup');
-
