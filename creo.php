@@ -95,7 +95,7 @@ add_action('wp_footer', 'register_service_worker');
 function creo_pwa_generate_manifest() {
     $manifest = [
         "name" => "Little Things Cute",
-        "short_name" => "Creo",
+        "short_name" => "LTC",
         "start_url" => "/",
         "display" => "standalone",
         "background_color" => "#ffffff",
