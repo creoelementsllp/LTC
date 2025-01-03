@@ -1,6 +1,6 @@
 const CACHE_NAME = 'creo-pwa-cache-v1';
 const assetsToCache = [
-    '/', // List of assets to cache
+    '/',
     '/index.html',
     '/wp-content/themes/oceanwp/style.css',
     '/offline.html',
@@ -24,39 +24,15 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request).then((cachedResponse) => {
             if (cachedResponse) {
-                return cachedResponse;
+                return cachedResponse; // Serve cached content if available
             }
+
+            // If no cache is found, return the offline page
+            return caches.match('/offline.html');
+        }).catch(() => {
+            // If there's an issue with cache or fetch, serve the offline page as a fallback
             return caches.match('/offline.html');
         })
-    );
-});
-
-// Push event: Display the notification
-self.addEventListener('push', (event) => {
-    let title = 'New Notification';
-    let options = {
-        body: 'You have a new message!',
-        icon: '/wp-content/plugins/creo/icon-192x192.png',
-        badge: '/wp-content/plugins/creo/icon-192x192.png',
-    };
-
-    if (event.data) {
-        const data = JSON.parse(event.data.text());
-        title = data.title || title;
-        options.body = data.body || options.body;
-        options.icon = data.icon || options.icon;
-    }
-
-    event.waitUntil(
-        self.registration.showNotification(title, options)
-    );
-});
-
-// Notification click event
-self.addEventListener('notificationclick', (event) => {
-    event.notification.close();
-    event.waitUntil(
-        clients.openWindow('/') // Open your website or specific page when clicked
     );
 });
 
@@ -68,7 +44,7 @@ self.addEventListener('activate', (event) => {
             return Promise.all(
                 cacheNames.map((cacheName) => {
                     if (!cacheWhitelist.includes(cacheName)) {
-                        return caches.delete(cacheName);
+                        return caches.delete(cacheName); // Delete old caches
                     }
                 })
             );

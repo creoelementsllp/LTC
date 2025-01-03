@@ -1,5 +1,4 @@
 let deferredPrompt;
-let pushSubscription = null;
 
 // Register the service worker
 if ('serviceWorker' in navigator) {
@@ -13,63 +12,69 @@ if ('serviceWorker' in navigator) {
         });
 }
 
-// Request Push Notification permission
-if ('Notification' in window && 'serviceWorker' in navigator) {
-    Notification.requestPermission().then((permission) => {
-        if (permission === 'granted') {
-            subscribeUserToPush();
+// Detect if the user is on iOS
+function isIOS() {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+}
+
+// Show the install prompt for Android/Windows or iOS instructions
+if (isIOS()) {
+    window.addEventListener('load', () => {
+        const installPopup = document.getElementById("install-pwa-popup-ios");
+        if (installPopup) {
+            installPopup.style.display = "block";
+        }
+    });
+} else {
+    window.addEventListener("beforeinstallprompt", (e) => {
+        // Prevent the default mini-infobar from appearing
+        e.preventDefault();
+        deferredPrompt = e;
+
+        // Show the install PWA popup
+        const installPopup = document.getElementById("install-pwa-popup");
+        if (installPopup) {
+            installPopup.style.display = "block"; // Make the popup visible
         }
     });
 }
 
-// Subscribe user for push notifications
-function subscribeUserToPush() {
-    navigator.serviceWorker.ready
-        .then(function (registration) {
-            if (!registration.pushManager) {
-                alert('Push Manager unavailable');
-                return;
-            }
+// Handle "Install" button click for Android/Windows
+document.getElementById("install-pwa-button")?.addEventListener("click", () => {
+    if (deferredPrompt) {
+        // Trigger the install prompt
+        deferredPrompt.prompt();
 
-            registration.pushManager
-                .subscribe({
-                    userVisibleOnly: true,
-                    applicationServerKey: urlBase64ToUint8Array('YOUR_PUBLIC_KEY') // Replace with your public VAPID key
-                })
-                .then(function (subscription) {
-                    pushSubscription = subscription;
-                    saveSubscription(subscription);
-                })
-                .catch(function (error) {
-                    console.error('Push subscription failed:', error);
-                });
-        })
-        .catch(function (error) {
-            console.error('Service Worker registration failed:', error);
-        });
-}
+        // Wait for the user's response
+        deferredPrompt.userChoice
+            .then((choiceResult) => {
+                if (choiceResult.outcome === "accepted") {
+                    console.log("User accepted the install prompt");
+                } else {
+                    console.log("User dismissed the install prompt");
+                }
+                deferredPrompt = null; // Reset the deferred prompt
+            });
 
-// Convert the public VAPID key to a Uint8Array
-function urlBase64ToUint8Array(base64String) {
-    const padding = '='.repeat((4 - base64String.length % 4) % 4);
-    const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
-    const rawData = window.atob(base64);
-    const outputArray = new Uint8Array(rawData.length);
-    for (let i = 0; i < rawData.length; ++i) {
-        outputArray[i] = rawData.charCodeAt(i);
+        // Hide the popup after interaction
+        const installPopup = document.getElementById("install-pwa-popup");
+        if (installPopup) {
+            installPopup.style.display = "none";
+        }
     }
-    return outputArray;
-}
+});
 
-// Save subscription to your server (backend logic)
-function saveSubscription(subscription) {
-    fetch('/wp-admin/admin-ajax.php?action=save_push_subscription', {
-        method: 'POST',
-        body: JSON.stringify(subscription),
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    }).then((response) => {
-        console.log('Subscription saved');
-    });
-}
+// Handle dismiss button clicks to hide the popup
+document.getElementById("dismiss-pwa-popup")?.addEventListener("click", () => {
+    const installPopup = document.getElementById("install-pwa-popup");
+    if (installPopup) {
+        installPopup.style.display = "none"; // Hide the popup if dismissed
+    }
+});
+
+document.getElementById("dismiss-pwa-popup-ios")?.addEventListener("click", () => {
+    const installPopupIOS = document.getElementById("install-pwa-popup-ios");
+    if (installPopupIOS) {
+        installPopupIOS.style.display = "none"; // Hide the iOS-specific popup if dismissed
+    }
+});

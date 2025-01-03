@@ -20,7 +20,6 @@ foreach (glob($shortcodes_dir . '*.php') as $file) {
 require_once plugin_dir_path(__FILE__) . 'cart_count.php';
 require_once plugin_dir_path(__FILE__) . 'push-notifications.php';
 
-
 // Enqueue assets (Swiper and custom scripts)
 function enqueue_swiper_assets() {
     wp_enqueue_style('swiper-css', 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css');
@@ -130,36 +129,3 @@ add_action('wp_footer', 'add_ios_install_pwa_popup');
 
 
 
-// Save the push subscription when the user subscribes
-function save_push_subscription() {
-    if ( isset( $_POST['subscription'] ) ) {
-        $subscription = json_decode( stripslashes( $_POST['subscription'] ), true );
-        
-        // Validate and sanitize the subscription data
-        if ( is_array( $subscription ) && isset( $subscription['endpoint'] ) ) {
-            // Store subscription in the WordPress options table
-            update_option( 'push_subscription', $subscription );
-        }
-    }
-
-    // End the script to prevent WordPress from sending its usual response
-    die();
-}
-add_action( 'wp_ajax_save_push_subscription', 'save_push_subscription' );
-add_action( 'wp_ajax_nopriv_save_push_subscription', 'save_push_subscription' );
-
-
-// Trigger push notifications when a post is published
-function send_push_notification_on_new_post($ID, $post) {
-    // Get the stored push subscription
-    $subscription = get_option('push_subscription');
-
-    if ($subscription) {
-        $title = 'New Post Published';
-        $body = 'Check out our new post: ' . get_the_title($ID);
-
-        // Call the function from push-notifications.php to send the notification
-        send_push_notification($subscription, $title, $body);
-    }
-}
-add_action('publish_post', 'send_push_notification_on_new_post', 10, 2);
