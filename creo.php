@@ -18,7 +18,6 @@ foreach (glob($shortcodes_dir . '*.php') as $file) {
     require_once $file;
 }
 require_once plugin_dir_path(__FILE__) . 'cart_count.php';
-require_once plugin_dir_path(__FILE__) . 'push-notifications.php';
 
 // Enqueue assets (Swiper and custom scripts)
 function enqueue_swiper_assets() {
