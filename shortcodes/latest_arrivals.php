@@ -102,7 +102,7 @@ function latest_arrivals_shortcode($atts)
                     while ($remaining_query->have_posts()) {
                         $remaining_query->the_post();
 
-                        // echo woocommerce_get_product_thumbnail();
+                        echo woocommerce_get_product_thumbnail();
                     }
 
                     echo '</div>'; // Close gallery row
