@@ -40,6 +40,8 @@ function enqueue_latest_arrivals_styles() {
 add_action('wp_enqueue_scripts', 'enqueue_latest_arrivals_styles');
 
 
+require_once plugin_dir_path(__FILE__) . 'push-notifications.php';
+
 
 
 
@@ -149,3 +151,42 @@ function add_ios_install_pwa_popup() {
 }
 add_action('wp_footer', 'add_ios_install_pwa_popup');
 
+
+
+// Push Notification Admin
+function creo_admin_menu() {
+    add_menu_page(
+        'Push Notifications',
+        'Push Notifications',
+        'manage_options',
+        'creo-push-notifications',
+        'creo_push_notifications_page'
+    );
+}
+add_action('admin_menu', 'creo_admin_menu');
+
+function creo_push_notifications_page() {
+    ?>
+    <div class="wrap">
+        <h1>Send Push Notification</h1>
+        <form method="post" action="">
+            <label for="title">Title:</label>
+            <input type="text" name="title" required>
+            <label for="body">Body:</label>
+            <textarea name="body" required></textarea>
+            <label for="url">URL:</label>
+            <input type="url" name="url">
+            <button type="submit">Send Notification</button>
+        </form>
+    </div>
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        send_push_notification(
+            $_POST['title'],
+            $_POST['body'],
+            plugin_dir_url(__FILE__) . 'icon-192x192.png',
+            $_POST['url']
+        );
+        echo '<p>Notification sent!</p>';
+    }
+}

@@ -1,15 +1,49 @@
 let deferredPrompt;
 
-// Register the service worker
-if ("serviceWorker" in navigator) {
+const applicationServerKey = 'BPs19Tjb5Jc065s3CSHsy1v4aaKPLtrEyOzFZDEgb-SKwMbmA2cck3mWxljXrlWwKjYELLTc8aeYY7QwpHcxLdU'; // Replace with your public key
+
+if ('serviceWorker' in navigator && 'PushManager' in window) {
     navigator.serviceWorker
-        .register("/wp-content/plugins/creo/js/sw.js")
-        .then(() => {
-            console.log("Service Worker Registered");
+        .register('/sw.js')
+        .then(function (registration) {
+            console.log('Service Worker registered:', registration);
+
+            return registration.pushManager.getSubscription().then(async function (subscription) {
+                if (!subscription) {
+                    const convertedKey = urlBase64ToUint8Array(applicationServerKey);
+                    return registration.pushManager.subscribe({
+                        userVisibleOnly: true,
+                        applicationServerKey: convertedKey,
+                    });
+                }
+                return subscription;
+            });
         })
-        .catch((error) => {
-            console.error("Service Worker Registration Failed:", error);
+        .then(function (subscription) {
+            console.log('Push subscription:', subscription);
+
+            // Send subscription to the server
+            fetch('/wp-json/myplugin/v1/subscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(subscription),
+            });
+        })
+        .catch(function (error) {
+            console.error('Service Worker error:', error);
         });
+}
+
+function urlBase64ToUint8Array(base64String) {
+    const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+    const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+    const rawData = atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
+
+    for (let i = 0; i < rawData.length; i++) {
+        outputArray[i] = rawData.charCodeAt(i);
+    }
+    return outputArray;
 }
 
 // Detect if the user is on iOS
