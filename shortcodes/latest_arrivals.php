@@ -99,11 +99,11 @@ function latest_arrivals_shortcode($atts)
                     // echo '<h3>Other Products</h3>'; // Gallery heading
                     echo '<div class="gallery-row">';
 
-                    while ($remaining_query->have_posts()) {
-                        $remaining_query->the_post();
+                    // while ($remaining_query->have_posts()) {
+                    //     $remaining_query->the_post();
 
-                        // echo woocommerce_get_product_thumbnail();
-                    }
+                    //     // echo woocommerce_get_product_thumbnail();
+                    // }
 
                     echo '</div>'; // Close gallery row
                     echo '</div>'; // Close product-gallery container
