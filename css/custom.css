@@ -9,6 +9,20 @@
     gap: 10px;
     height: calc(16.875vw - 10px + 5.25rem + 60px);
 }
+.swiper-button-prev , .swiper-button-next {
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: white;
+    border-radius: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper-button-prev:after , .swiper-button-next:after {
+    font-size: 1.5rem;
+    color: #46545e;
+}
 
 .swiper.custom-product-cards {
     height: calc(16.875vw - 10px + 5.25rem + 60px) !important;
