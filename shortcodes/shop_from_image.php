@@ -5,13 +5,13 @@ function interactive_image_hover_shortcode() {
     ob_start(); ?>
     <div class="interactive-image-hover-container">
         <!-- Background JPG -->
-        <img class="layer jpg" id="background" src="https://demo.littlethingscute.com/wp-content/uploads/2024/12/bg-model-scaled.jpg" alt="Background">
+        <img class="layer jpg" id="background" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/WhatsApp-Image-2025-01-06-at-16.30.32_190ea369-scaled.jpg" alt="Background">
 
         <!-- Transparent PNGs -->
-        <img class="layer png" id="png1" src="https://demo.littlethingscute.com/wp-content/uploads/2024/12/item-1.png" alt="Overlay 1">
-        <img class="layer png" id="png2" src="https://demo.littlethingscute.com/wp-content/uploads/2024/12/item2.png" alt="Overlay 2">
-        <img class="layer png" id="png3" src="https://demo.littlethingscute.com/wp-content/uploads/2024/12/item3.png" alt="Overlay 3">
-        <img class="layer png" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2024/12/item4.png" alt="Overlay 4">
+            <!-- <img class="layer png" id="png1" src="https://demo.littlethingscute.com/wp-content/uploads/2024/12/item-1.png" alt="Overlay 1">
+            <img class="layer png" id="png2" src="https://demo.littlethingscute.com/wp-content/uploads/2024/12/item2.png" alt="Overlay 2">
+            <img class="layer png" id="png3" src="https://demo.littlethingscute.com/wp-content/uploads/2024/12/item3.png" alt="Overlay 3">
+            <img class="layer png" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2024/12/item4.png" alt="Overlay 4"> -->
     </div>
     <style>
         .interactive-image-hover-container {
