@@ -16,6 +16,16 @@ function swiper_video_shortcode()
                 <video src="https://demo.littlethingscute.com/wp-content/uploads/2024/12/ltc-video.mp4" preload="metadata" muted></video>
                 <div class="play-button"></div>
             </div>
+            <div class="swiper-slide">
+                <img src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/charms_frame.jpg" alt="Thumbnail 2">
+                <video src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/charms.mp4" preload="metadata" muted></video>
+                <div class="play-button"></div>
+            </div>
+            <div class="swiper-slide">
+                <img src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/magnets_frame.jpg" alt="Thumbnail 2">
+                <video src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/magnets.mp4" preload="metadata" muted></video>
+                <div class="play-button"></div>
+            </div>
         </div>
         <div class="swiper-pagination"></div>
     </div>
