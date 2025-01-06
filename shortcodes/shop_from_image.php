@@ -8,14 +8,14 @@ function interactive_image_hover_shortcode() {
         <img class="layer jpg" id="background" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/image_banner-scaled.jpg" alt="Background">
 
         <!-- Transparent PNGs -->
-            <img class="layer png" id="png1" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/pencil_banner_part.png" alt="Overlay 1">
-            <img class="layer png" id="png2" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/earings_banner_part.png" alt="Overlay 2">
-            <img class="layer png" id="png3" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/travel_Tag_banner_part.png" alt="Overlay 3">
-            <img class="layer png" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/charms_2_banner_part.png" alt="Overlay 4">
-            <img class="layer png" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/diary_banner_part.png" alt="Overlay 5">
-            <img class="layer png" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/charms_banner_part.png" alt="Overlay 6">
-            <img class="layer png" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/magnets_banner_part.png" alt="Overlay 7">
-            <img class="layer png" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/earrings_2_banner_part.png" alt="Overlay 8">
+            <img class="layer png" data-name="Kids Pencils" data-link="/" id="png1" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/pencil_banner_part.png" alt="Overlay 1">
+            <img class="layer png" data-name="Kids Pencils" data-link="/" id="png2" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/earings_banner_part.png" alt="Overlay 2">
+            <img class="layer png" data-name="Kids Pencils" data-link="/" id="png3" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/travel_Tag_banner_part.png" alt="Overlay 3">
+            <img class="layer png" data-name="Kids Pencils" data-link="/" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/charms_2_banner_part.png" alt="Overlay 4">
+            <img class="layer png" data-name="Kids Pencils" data-link="/" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/diary_banner_part.png" alt="Overlay 5">
+            <img class="layer png" data-name="Kids Pencils" data-link="/" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/charms_banner_part.png" alt="Overlay 6">
+            <img class="layer png" data-name="Kids Pencils" data-link="/" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/magnets_banner_part.png" alt="Overlay 7">
+            <img class="layer png" data-name="Kids Pencils" data-link="/" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/earrings_2_banner_part.png" alt="Overlay 8">
     </div>
     <style>
         .interactive-image-hover-container {
@@ -49,7 +49,7 @@ function interactive_image_hover_shortcode() {
         }
 
         .hovered {
-            filter: drop-shadow(0px 0px 15px rgba(255, 255, 0, 0.8));
+            filter: drop-shadow(0px 0px 5px rgba(255, 255, 0, 0.8));
         }
 
         .grayscale {
@@ -58,59 +58,88 @@ function interactive_image_hover_shortcode() {
         }
     </style>
     <script>
-        const pngLayers = document.querySelectorAll(".layer.png");
-        const background = document.getElementById("background");
-        const container = document.querySelector(".interactive-image-hover-container");
+    const pngLayers = document.querySelectorAll(".layer.png");
+    const background = document.getElementById("background");
+    const container = document.querySelector(".interactive-image-hover-container");
 
-        pngLayers.forEach((png) => {
-            const canvas = document.createElement("canvas");
-            const ctx = canvas.getContext("2d");
-            const img = new Image();
+    // Create the tooltip element
+    const tooltip = document.createElement("div");
+    tooltip.style.position = "absolute";
+    tooltip.style.background = "rgba(0, 0, 0, 0.7)";
+    tooltip.style.color = "white";
+    tooltip.style.padding = "5px 10px";
+    tooltip.style.borderRadius = "5px";
+    tooltip.style.fontSize = "12px";
+    tooltip.style.pointerEvents = "none";
+    tooltip.style.visibility = "hidden";
+    document.body.appendChild(tooltip);
 
-            img.src = png.src;
-            img.onload = () => {
-                canvas.width = img.width;
-                canvas.height = img.height;
-                ctx.drawImage(img, 0, 0);
+    pngLayers.forEach((png) => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        const img = new Image();
 
-                // Add mousemove event to detect hover over visible parts of PNG
-                container.addEventListener("mousemove", (e) => {
-                    const rect = container.getBoundingClientRect();
+        img.src = png.src;
+        img.onload = () => {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
 
-                    // Check if the container is scaled
-                    const scaleX = img.width / rect.width;
-                    const scaleY = img.height / rect.height;
+            // Add mousemove event to detect hover over visible parts of PNG
+            container.addEventListener("mousemove", (e) => {
+                const rect = container.getBoundingClientRect();
 
-                    // Calculate the position within the image
-                    const x = (e.clientX - rect.left) * scaleX;
-                    const y = (e.clientY - rect.top) * scaleY;
+                // Check if the container is scaled
+                const scaleX = img.width / rect.width;
+                const scaleY = img.height / rect.height;
 
-                    // Get pixel data at the mouse position
-                    const pixel = ctx.getImageData(x, y, 1, 1).data;
-                    const alpha = pixel[3];
+                // Calculate the position within the image
+                const x = (e.clientX - rect.left) * scaleX;
+                const y = (e.clientY - rect.top) * scaleY;
 
-                    if (alpha > 0) {
-                        pngLayers.forEach((layer) => layer.classList.remove("hovered", "grayscale"));
-                        png.classList.add("hovered");
+                // Get pixel data at the mouse position
+                const pixel = ctx.getImageData(x, y, 1, 1).data;
+                const alpha = pixel[3];
 
-                        pngLayers.forEach((layer) => {
-                            if (layer !== png) {
-                                layer.classList.add("grayscale");
-                            }
-                        });
+                if (alpha > 0) {
+                    pngLayers.forEach((layer) => layer.classList.remove("hovered", "grayscale"));
+                    png.classList.add("hovered");
 
-                        background.classList.add("grayscale");
-                        // console.log(`Hovered over visible area of: ${png.id}`);
-                    }
-                });
-            };
-        });
+                    pngLayers.forEach((layer) => {
+                        if (layer !== png) {
+                            layer.classList.add("grayscale");
+                        }
+                    });
 
-        container.addEventListener("mouseleave", () => {
-            pngLayers.forEach((layer) => layer.classList.remove("hovered", "grayscale"));
-            background.classList.remove("grayscale");
-        });
-    </script>
+                    background.classList.add("grayscale");
+
+                    // Show tooltip with the data-name value
+                    tooltip.innerText = png.dataset.name;
+                    tooltip.style.visibility = "visible";
+                    tooltip.style.left = e.pageX + 10 + "px";
+                    tooltip.style.top = e.pageY + 10 + "px";
+                }
+            });
+
+            // Add click event to navigate to the link
+            png.addEventListener("click", () => {
+                const link = png.dataset.link;
+                if (link) {
+                    window.location.href = link;
+                }
+            });
+        };
+    });
+
+    container.addEventListener("mouseleave", () => {
+        pngLayers.forEach((layer) => layer.classList.remove("hovered", "grayscale"));
+        background.classList.remove("grayscale");
+
+        // Hide tooltip
+        tooltip.style.visibility = "hidden";
+    });
+</script>
+
     <?php
     return ob_get_clean();
 }
