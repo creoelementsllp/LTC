@@ -5,20 +5,23 @@ function interactive_image_hover_shortcode() {
     ob_start(); ?>
     <div class="interactive-image-hover-container">
         <!-- Background JPG -->
-        <img class="layer jpg" id="background" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/WhatsApp-Image-2025-01-06-at-16.30.32_190ea369-scaled.jpg" alt="Background">
+        <img class="layer jpg" id="background" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/image_banner-scaled.jpg" alt="Background">
 
         <!-- Transparent PNGs -->
-            <!-- <img class="layer png" id="png1" src="https://demo.littlethingscute.com/wp-content/uploads/2024/12/item-1.png" alt="Overlay 1">
-            <img class="layer png" id="png2" src="https://demo.littlethingscute.com/wp-content/uploads/2024/12/item2.png" alt="Overlay 2">
-            <img class="layer png" id="png3" src="https://demo.littlethingscute.com/wp-content/uploads/2024/12/item3.png" alt="Overlay 3">
-            <img class="layer png" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2024/12/item4.png" alt="Overlay 4"> -->
+            <img class="layer png" id="png1" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/pencils_banner_part.png" alt="Overlay 1">
+            <img class="layer png" id="png2" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/earings_banner_part.png" alt="Overlay 2">
+            <img class="layer png" id="png3" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/travel_Tag_banner_part.png" alt="Overlay 3">
+            <img class="layer png" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/charms_2_banner_part.png" alt="Overlay 4">
+            <img class="layer png" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/diary_banner_part.png" alt="Overlay 5">
+            <img class="layer png" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/charms_banner_part.png" alt="Overlay 6">
+            <img class="layer png" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/magnets_banner_part.png" alt="Overlay 7">
     </div>
     <style>
         .interactive-image-hover-container {
             position: relative;
             width: 100%; /* Default to 100% width */
             height: 0;
-            padding-bottom: 75%; /* Aspect ratio for 2048x1365 image */
+            padding-bottom: 66.5%; /* Aspect ratio for 2048x1365 image */
             max-width: 100%; /* Adjust this to control container size */
             display: inline-block; /* To make it respect parent container's width */
             border-radius: 20px;
