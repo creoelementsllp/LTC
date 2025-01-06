@@ -8,13 +8,14 @@ function interactive_image_hover_shortcode() {
         <img class="layer jpg" id="background" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/image_banner-scaled.jpg" alt="Background">
 
         <!-- Transparent PNGs -->
-            <img class="layer png" id="png1" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/pencils_banner_part.png" alt="Overlay 1">
+            <img class="layer png" id="png1" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/pencil_banner_part.png" alt="Overlay 1">
             <img class="layer png" id="png2" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/earings_banner_part.png" alt="Overlay 2">
             <img class="layer png" id="png3" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/travel_Tag_banner_part.png" alt="Overlay 3">
             <img class="layer png" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/charms_2_banner_part.png" alt="Overlay 4">
             <img class="layer png" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/diary_banner_part.png" alt="Overlay 5">
             <img class="layer png" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/charms_banner_part.png" alt="Overlay 6">
             <img class="layer png" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/magnets_banner_part.png" alt="Overlay 7">
+            <img class="layer png" id="png4" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/earrings_2_banner_part.png" alt="Overlay 8">
     </div>
     <style>
         .interactive-image-hover-container {
