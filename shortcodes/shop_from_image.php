@@ -18,7 +18,7 @@ function interactive_image_hover_shortcode() {
             position: relative;
             width: 100%; /* Default to 100% width */
             height: 0;
-            padding-bottom: 66.5%; /* Aspect ratio for 2048x1365 image */
+            padding-bottom: 75%; /* Aspect ratio for 2048x1365 image */
             max-width: 100%; /* Adjust this to control container size */
             display: inline-block; /* To make it respect parent container's width */
             border-radius: 20px;
