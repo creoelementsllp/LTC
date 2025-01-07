@@ -12,10 +12,7 @@ function interactive_image_hover_shortcode() {
             <path d="m1857.5 1251-491.5-10.5 5.5 248.5h-103l-7.5 87.5 7.5 16 3 429 291 2.5 8.5 45 275.5-31.5c-9.6-133.2 65.67-180.17 104.5-187-4.8-13.6.67-61.67 4-84l8-7c-4.8.4-6-2.5-6-4-.8-10.4 5.33-23.67 8.5-29 24.4-15.2 33.17-9 34.5-4l-10 96c2-12 20.5-18.67 29.5-20.5-7.2-8.4-9.33-23.17-9.5-29.5l13 8.5c-12.33-133-37.5-404-39.5-424s-21.17-24.67-30.5-24.5l-71-1.5c-.17-8.67-.4-30.4 0-48s-16.17-26-24.5-28" fill="#D9D9D9"/>
         </svg>
 
-        <svg class="layer svg" data-name="Charm SVG" data-link="/" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4032 3024">
-            <!-- Add your SVG paths or shapes here -->
-            <circle cx="1500" cy="1500" r="400" fill="red"/>
-        </svg>
+       
         
         <!-- Add more inline SVGs as needed -->
     </div>
@@ -24,7 +21,7 @@ function interactive_image_hover_shortcode() {
             position: relative;
             width: 100%;
             height: 0;
-            padding-bottom: 66.5%; /* Adjust aspect ratio */
+            padding-bottom: 75%; /* Adjust aspect ratio */
             max-width: 100%;
             display: inline-block;
             border-radius: 20px;
