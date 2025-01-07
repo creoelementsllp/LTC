@@ -43,7 +43,7 @@ function interactive_image_hover_shortcode() {
 
         .layer.svg {
             z-index: 2;
-            pointer-events: none; /* SVG is not clickable until made interactive */
+            pointer-events: auto; /* SVG is not clickable until made interactive */
         }
 
         .hovered {
