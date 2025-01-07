@@ -39,7 +39,7 @@ function homepage_banner_shortcode() {
         .swiper.homepage_banner {
     border-radius: 20px;
 }
-        @media screen and (max-width: 678px) {
+        @media screen and (max-width: 1024px) {
             .swiper {
                 min-height: 100%;
                 width: 100%;
