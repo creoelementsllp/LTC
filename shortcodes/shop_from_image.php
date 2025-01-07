@@ -30,7 +30,7 @@ function interactive_image_hover_shortcode()
         </svg>
 
         <svg class="layer svg" data-name="Fridge Magnets" data-link="/product-category/home-living/fridge-magnets/" viewBox="0 0 2240 1260" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1477 241.5c4.8 4 7.33 1.667 8 0 28.5-25 47.5-56 29.5-66.5-14.4-8.4-27.33 2.167-32 8.5-1.83-5.167-9.4-14.1-25-8.5s-11.83 22.667-8 30.5c7.17 10.333 22.7 32 27.5 36" fill="#D9D9D9" />
+            <path d="M1477 241.5c4.8 4 7.33 1.667 8 0 28.5-25 47.5-56 29.5-66.5-14.4-8.4-27.33 2.167-32 8.5-1.83-5.167-9.4-14.1-25-8.5s-11.83 22.667-8 30.5c7.17 10.333 22.7 32 27.5 36" fill="#D9D9D900" />
             <circle cx="1561" cy="608" r="33" fill="#D9D9D900" />
             <ellipse cx="1466" cy="536" rx="34" ry="35" fill="#D9D9D900" />
             <ellipse cx="1363.5" cy="494.5" rx="29.5" ry="30.5" fill="#D9D9D900" />
@@ -40,7 +40,7 @@ function interactive_image_hover_shortcode()
             <ellipse cx="1472.5" cy="294" rx="35.5" ry="36" fill="#D9D9D900" />
             <ellipse cx="1384.5" cy="259.5" rx="30.5" ry="31.5" fill="#D9D9D900" />
             <rect x="1535" y="464" width="76" height="73" rx="4" fill="#D9D9D900" />
-            <path d="M1334.13 564.168c-.62-3.917 2.14-7.564 6.07-8.041l52.06-6.31a7 7 0 0 1 7.76 5.896l8.35 54.88a7 7 0 0 1-6.34 8.029l-52.05 4.338a6.996 6.996 0 0 1-7.49-5.884z" fill="#D9D9D9" />
+            <path d="M1334.13 564.168c-.62-3.917 2.14-7.564 6.07-8.041l52.06-6.31a7 7 0 0 1 7.76 5.896l8.35 54.88a7 7 0 0 1-6.34 8.029l-52.05 4.338a6.996 6.996 0 0 1-7.49-5.884z" fill="#D9D9D900" />
             <rect x="1307.94" y="361.776" width="68.945" height="68.945" rx="7" transform="rotate(-32.546 1307.94 361.776)" fill="#D9D9D900" />
         </svg>
 
@@ -62,7 +62,7 @@ function interactive_image_hover_shortcode()
             position: relative;
             width: 100%;
             height: 0;
-            padding-bottom: 75%;
+            padding-bottom: 56%;
             /* Adjust aspect ratio */
             max-width: 100%;
             display: inline-block;
