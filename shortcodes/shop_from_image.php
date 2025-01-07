@@ -117,57 +117,49 @@ function interactive_image_hover_shortcode()
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const svgPaths = document.querySelectorAll(".layer.svg path");
+            const svgElements = document.querySelectorAll(".layer.svg path, .layer.svg circle, .layer.svg ellipse"); // Include paths, circles, and ellipses
             const background = document.getElementById("background");
             const container = document.querySelector(".interactive-image-hover-container");
 
             // Tooltip logic
             const tooltip = document.createElement("div");
             tooltip.classList.add("tooltip");
-            // tooltip.style.position = "absolute";
-            // tooltip.style.background = "rgba(0, 0, 0, 0.7)";
-            // tooltip.style.color = "white";
-            // tooltip.style.padding = "5px 10px";
-            // tooltip.style.borderRadius = "5px";
-            // tooltip.style.fontSize = "12px";
-            // tooltip.style.pointerEvents = "none";
-            // tooltip.style.visibility = "hidden";
             document.body.appendChild(tooltip);
 
-            svgPaths.forEach((path) => {
-                path.addEventListener("mouseenter", (e) => {
-                    svgPaths.forEach((p) => p.classList.remove("hovered", "grayscale"));
-                    path.classList.add("hovered");
+            svgElements.forEach((element) => {
+                element.addEventListener("mouseenter", (e) => {
+                    svgElements.forEach((el) => el.classList.remove("hovered", "grayscale"));
+                    element.classList.add("hovered");
 
-                    svgPaths.forEach((p) => {
-                        if (p !== path) {
-                            p.classList.add("grayscale");
+                    svgElements.forEach((el) => {
+                        if (el !== element) {
+                            el.classList.add("grayscale");
                         }
                     });
 
                     background.classList.add("grayscale");
 
                     // Show tooltip
-                    const svg = path.closest("svg");
+                    const svg = element.closest("svg");
                     tooltip.innerText = svg.dataset.name || "Hovered Element";
                     tooltip.style.visibility = "visible";
                 });
 
-                path.addEventListener("mouseleave", () => {
-                    svgPaths.forEach((p) => p.classList.remove("hovered", "grayscale"));
+                element.addEventListener("mouseleave", () => {
+                    svgElements.forEach((el) => el.classList.remove("hovered", "grayscale"));
                     background.classList.remove("grayscale");
 
                     // Hide tooltip
                     tooltip.style.visibility = "hidden";
                 });
 
-                path.addEventListener("mousemove", (e) => {
+                element.addEventListener("mousemove", (e) => {
                     tooltip.style.left = e.pageX + 10 + "px";
                     tooltip.style.top = e.pageY + 10 + "px";
                 });
 
-                path.addEventListener("click", () => {
-                    const svg = path.closest("svg");
+                element.addEventListener("click", () => {
+                    const svg = element.closest("svg");
                     const link = svg.dataset.link;
                     if (link) {
                         window.location.href = link;
@@ -176,7 +168,7 @@ function interactive_image_hover_shortcode()
             });
 
             container.addEventListener("mouseleave", () => {
-                svgPaths.forEach((p) => p.classList.remove("hovered", "grayscale"));
+                svgElements.forEach((el) => el.classList.remove("hovered", "grayscale"));
                 background.classList.remove("grayscale");
 
                 // Hide tooltip
