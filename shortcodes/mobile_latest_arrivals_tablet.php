@@ -1,5 +1,5 @@
 <?php
-function mobile_latest_arrivals_shortcode($atts)
+function mobile_latest_arrivals_tablet_shortcode($atts)
 {
     // Shortcode attributes with default values
     $atts = shortcode_atts(
@@ -91,5 +91,5 @@ function mobile_latest_arrivals_shortcode($atts)
 
 
 // Add the shortcode
-add_shortcode('mobile_latest_arrivals', 'mobile_latest_arrivals_shortcode');
+add_shortcode('mobile_latest_arrivals_tablet', 'mobile_latest_arrivals_tablet_shortcode');
 ?>
