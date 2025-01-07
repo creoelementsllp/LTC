@@ -9,7 +9,7 @@ function interactive_image_hover_shortcode()
         <img class="layer jpg" id="background" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/image_banner-scaled.jpg" alt="Background">
 
         <!-- Inline SVGs -->
-        <svg class="layer svg" data-name="Kids Pencils" data-link="/" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4032 3024">
+        <svg class="layer svg" data-name="Diaries" data-link="/" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4032 3024">
             <path d="m1857.5 1251-491.5-10.5 5.5 248.5h-103l-7.5 87.5 7.5 16 3 429 291 2.5 8.5 45 275.5-31.5c-9.6-133.2 65.67-180.17 104.5-187-4.8-13.6.67-61.67 4-84l8-7c-4.8.4-6-2.5-6-4-.8-10.4 5.33-23.67 8.5-29 24.4-15.2 33.17-9 34.5-4l-10 96c2-12 20.5-18.67 29.5-20.5-7.2-8.4-9.33-23.17-9.5-29.5l13 8.5c-12.33-133-37.5-404-39.5-424s-21.17-24.67-30.5-24.5l-71-1.5c-.17-8.67-.4-30.4 0-48s-16.17-26-24.5-28" fill="#00000000" />
         </svg>
 
@@ -57,6 +57,17 @@ function interactive_image_hover_shortcode()
             filter: grayscale(100%);
             filter: drop-shadow(0px 0px 0px rgba(255, 255, 0, 0));
         }
+        .tooltip{
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            pointer-events: none;
+            visibility: hidden;
+            z-index: 5;
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -67,14 +78,14 @@ function interactive_image_hover_shortcode()
             // Tooltip logic
             const tooltip = document.createElement("div");
             tooltip.classList.add("tooltip");
-            tooltip.style.position = "absolute";
-            tooltip.style.background = "rgba(0, 0, 0, 0.7)";
-            tooltip.style.color = "white";
-            tooltip.style.padding = "5px 10px";
-            tooltip.style.borderRadius = "5px";
-            tooltip.style.fontSize = "12px";
-            tooltip.style.pointerEvents = "none";
-            tooltip.style.visibility = "hidden";
+            // tooltip.style.position = "absolute";
+            // tooltip.style.background = "rgba(0, 0, 0, 0.7)";
+            // tooltip.style.color = "white";
+            // tooltip.style.padding = "5px 10px";
+            // tooltip.style.borderRadius = "5px";
+            // tooltip.style.fontSize = "12px";
+            // tooltip.style.pointerEvents = "none";
+            // tooltip.style.visibility = "hidden";
             document.body.appendChild(tooltip);
 
             svgPaths.forEach((path) => {
