@@ -66,6 +66,7 @@ function interactive_image_hover_shortcode()
 
             // Tooltip logic
             const tooltip = document.createElement("div");
+            tooltip.classList.add("tooltip");
             tooltip.style.position = "absolute";
             tooltip.style.background = "rgba(0, 0, 0, 0.7)";
             tooltip.style.color = "white";
