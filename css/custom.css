@@ -162,7 +162,7 @@ td.product-thumbnail  img.attachment-woocommerce_thumbnail.size-woocommerce_thum
 
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     /* For mobile phones: */
     
     
@@ -295,4 +295,12 @@ table.additional-info {
     width: calc(100% - 10px);
 }
 
+}
+
+
+
+@media screen and (max-width : 1024px){
+    .swiper.custom-product-cards {
+        margin-top: 0px;
+    }
 }
