@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var productCardsSwiper = new Swiper(".custom-product-cards", {
     slidesPerView: 4,
     spaceBetween: 20,
-    loop: true,
+    // loop: true,
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",

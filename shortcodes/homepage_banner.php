@@ -54,13 +54,13 @@ function homepage_banner_shortcode() {
     </style>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var homepage_banner_swiper = new Swiper(".homepage_banner", {
-                pagination: {
-                    el: ".homepage_banner .swiper-pagination",
-                },
-            });
-        });
+        // document.addEventListener("DOMContentLoaded", function() {
+        //     var homepage_banner_swiper = new Swiper(".homepage_banner", {
+        //         pagination: {
+        //             el: ".homepage_banner .swiper-pagination",
+        //         },
+        //     });
+        // });
     </script>
     <?php
 }
