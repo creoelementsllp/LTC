@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var swiper = new Swiper(".custom-product-cards", {
     slidesPerView: 2,
     spaceBetween: 20,
-    loop: true,
+    // loop: true,
     // autoplay: {
     //   delay: 2500,
     //   disableOnInteraction: false,
@@ -61,5 +61,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+homepageSwiper.on('slideChange', function () {
+  productCardsSwiper.slideTo(homepageSwiper.activeIndex * 4);
+});
 
+productCardsSwiper.on('slideChange', function () {
+  homepageSwiper.slideTo(Math.floor(productCardsSwiper.activeIndex / 4));
+});
 
