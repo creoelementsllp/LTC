@@ -83,6 +83,10 @@ function interactive_image_hover_shortcode()
             pointer-events: all;
         }
 
+        .layer.svg path:hover {
+            cursor: pointer;
+        }
+
         .hovered {
             filter: drop-shadow(0px 0px 5px rgba(255, 255, 0, 0.8));
 
