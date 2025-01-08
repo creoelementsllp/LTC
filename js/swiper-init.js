@@ -23,35 +23,31 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
+  var homepageSwiper = new Swiper(".homepage_banner", {
+    pagination: {
+      el: ".homepage_banner .swiper-pagination",
+    },
+  });
 
-  var swiper = new Swiper(".custom-product-cards", {
+  // Initialize the custom product cards swiper
+  var productCardsSwiper = new Swiper(".custom-product-cards", {
     slidesPerView: 4,
     spaceBetween: 20,
-    // autoplay: {
-    //   delay: 2500,
-    //   disableOnInteraction: false,
-    // },
-    breakpoints: {
-      640: {
-        slidesPerView: 2,
-        spaceBetween: 20,
-      },
-      768: {
-        slidesPerView: 4,
-        spaceBetween: 20,
-      },
-      1024: {
-        slidesPerView: 4,
-        spaceBetween: 20,
-      },
-    },
+    loop: true,
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
     },
   });
 
+  // Synchronize the two swipers
+  homepageSwiper.on('slideChange', function () {
+    productCardsSwiper.slideTo(homepageSwiper.activeIndex * 4);
+  });
 
+  productCardsSwiper.on('slideChange', function () {
+    homepageSwiper.slideTo(Math.floor(productCardsSwiper.activeIndex / 4));
+  });
 
 
 
