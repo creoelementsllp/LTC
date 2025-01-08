@@ -132,7 +132,7 @@ td.product-thumbnail  img.attachment-woocommerce_thumbnail.size-woocommerce_thum
 
 .product-card.see-more-card {
     min-width: calc(22.5vw - 30px);
-    height: calc(16.875vw - 10px + 5.25rem + 60px + 10rem + 20px);
+    height: calc((16.875vw - 10px + 5.25rem + 60px) * 2 + 20px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -143,8 +143,8 @@ td.product-thumbnail  img.attachment-woocommerce_thumbnail.size-woocommerce_thum
 }
 
 .gallery-row img.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail {
-    width: 125px;
-    height: 125px;
+    width: 270px;
+    height: 270px;
     border-radius: 20px;
 }
 
