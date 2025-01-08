@@ -51,7 +51,7 @@ function mobile_latest_arrivals_tablet_shortcode($atts)
             $product_id = $product->get_id();
             // Render a product card
             echo '<a href="' . get_permalink() . '" class="product-card">';
-            
+
             echo '<div class="wishlist-btn yith-wcwl-add-to-wishlist add_to_wishlist" data-product-id="' . esc_attr($product_id) . '">
                     <span class="heart-icon">&#9825;</span>
                 </div>';
@@ -71,7 +71,7 @@ function mobile_latest_arrivals_tablet_shortcode($atts)
         }
 
         // Close any unclosed row
-        
+
         echo '</div>';
 
         // Add the "See All Products" button in a new row
@@ -92,4 +92,3 @@ function mobile_latest_arrivals_tablet_shortcode($atts)
 
 // Add the shortcode
 add_shortcode('mobile_latest_arrivals_tablet', 'mobile_latest_arrivals_tablet_shortcode');
-?>
