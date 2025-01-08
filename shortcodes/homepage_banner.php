@@ -7,7 +7,7 @@ function homepage_banner_shortcode() {
                 <img src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/2.png" alt="Little Things Cute Banner">
             </div>
             <div class="swiper-slide">
-                <img src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/3.pngg" alt="Little Things Cute Banner">
+                <img src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/3.png" alt="Little Things Cute Banner">
             </div>
             <div class="swiper-slide">
                 <img src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/4.png" alt="Little Things Cute Banner">
