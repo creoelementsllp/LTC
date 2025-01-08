@@ -27,6 +27,10 @@ document.addEventListener('DOMContentLoaded', function () {
     pagination: {
       el: ".homepage_banner .swiper-pagination",
     },
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
   });
 
   // Initialize the custom product cards swiper
