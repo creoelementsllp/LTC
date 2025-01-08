@@ -77,7 +77,7 @@ function latest_arrivals_shortcode($atts)
                 // Fetch the remaining products for the gallery (up to 4)
                 $remaining_args = array(
                     'post_type' => 'product',
-                    'posts_per_page' => 4, // Limit to 4 products for the gallery
+                    'posts_per_page' => 2, // Limit to 4 products for the gallery
                     'post_status' => 'publish',
                     'offset' => $atts['limit'], // Skip the already displayed products
                 );
