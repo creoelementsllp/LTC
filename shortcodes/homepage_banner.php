@@ -55,7 +55,7 @@ function homepage_banner_shortcode() {
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var homepage__banne_swiper = new Swiper(".homepage_banner", {
+            var homepage_banner_swiper = new Swiper(".homepage_banner", {
                 pagination: {
                     el: ".homepage_banner .swiper-pagination",
                 },
