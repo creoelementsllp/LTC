@@ -89,5 +89,5 @@ function custom_product_cards_mobile_shortcode()
 }
 
 // Add the shortcode
-add_shortcode('product_cards_mobile', 'custom_product_cards_shortcode');
+add_shortcode('product_cards_mobile', 'custom_product_cards_mobile_shortcode');
 ?>
