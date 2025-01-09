@@ -325,12 +325,12 @@ td.product-thumbnail img.attachment-woocommerce_thumbnail.size-woocommerce_thumb
     }
 
     .custom-product-cards {
-        height: calc(25vw - 20px + 7rem + 60px);
+        height: calc(25% - 20px + 7rem + 60px);
         overflow: hidden;
     }
 
     .swiper.custom-product-cards {
-        min-height: calc(25vw - 20px + 7rem + 60px);
+        min-height: calc(25% - 20px + 7rem + 60px);
         margin-top: 0px;
     }
 
@@ -339,25 +339,25 @@ td.product-thumbnail img.attachment-woocommerce_thumbnail.size-woocommerce_thumb
     }
 
     .product-card {
-        width: calc(25vw - 20px);
+        width: calc(25% - 20px);
         height: fit-content;
     }
 
 
     .latest-arrivals .row:nth-child(1) .product-card:nth-child(1) {
-        min-width: calc(25vw - 20px);
+        min-width: calc(25% - 20px);
         height: calc(25vw - 20px + 7rem + 60px);
         transform: none;
     }
 
     .latest-arrivals .row .product-card {
-        min-width: calc(25vw - 20px);
+        min-width: calc(25% - 20px);
         height: calc(25vw - 20px + 7rem + 60px);
         transform: none;
     }
 
     .latest-arrivals .row:nth-child(1) .product-card:nth-child(1) img {
-        width: calc(25vw - 20px);
+        width: calc(25% - 20px);
         height: calc(25vw - 20px);
     }
 
