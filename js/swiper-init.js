@@ -57,15 +57,15 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
-  
-  // Synchronize the two swipers
-  homepageSwiper.on('slideChange', function () {
-    productCardsSwiper.slideTo(homepageSwiper.activeIndex * 4);
-  });
 
-  productCardsSwiper.on('slideChange', function () {
-    homepageSwiper.slideTo(Math.floor(productCardsSwiper.activeIndex / 4));
-  });
+  // // Synchronize the two swipers
+  // homepageSwiper.on('slideChange', function () {
+  //   productCardsSwiper.slideTo(homepageSwiper.activeIndex * 4);
+  // });
+
+  // productCardsSwiper.on('slideChange', function () {
+  //   homepageSwiper.slideTo(Math.floor(productCardsSwiper.activeIndex / 4));
+  // });
 
 
 
