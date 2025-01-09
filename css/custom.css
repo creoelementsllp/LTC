@@ -314,7 +314,7 @@ td.product-thumbnail img.attachment-woocommerce_thumbnail.size-woocommerce_thumb
 }
 @media screen and (max-width: 767px){
     .latest-arrivals .row:nth-child(1) .product-card:nth-child(1) {
-        min-width: calc(25vw - 20px);
+        min-width: calc(50vw - 20px);
         height: calc(50vw - 20px + 7rem + 60px);
         transform: none;
     }
@@ -323,7 +323,7 @@ td.product-thumbnail img.attachment-woocommerce_thumbnail.size-woocommerce_thumb
         height: calc(50vw - 20px + 7rem + 60px);
     }
     .latest-arrivals .row .product-card {
-        min-width: calc(25vw - 20px);
+        min-width: calc(50vw - 20px);
         height: calc(50vw - 20px + 7rem + 60px);
         transform: none;
     }

@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Initialize the custom product cards swiper
   var productCardsSwiper = new Swiper(".custom-product-cards", {
-    slidesPerView: 4,
+    slidesPerView: 2,
     spaceBetween: 20,
     // loop: true,
     navigation: {
