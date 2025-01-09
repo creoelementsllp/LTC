@@ -35,16 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   console.log("Initializing Swipers...");
 
-  var productCardsSwiperMobile = new Swiper(".custom-product-cards-mobile", {
-    slidesPerView: 2,
-    spaceBetween: 20,
-    navigation: {
-      nextEl: ".custom-mobile-next",
-      prevEl: ".custom-mobile-prev",
-    },
-  });
-
-  console.log("Swiper initialized: ", productCardsSwiperMobile);
 
 
   // Initialize the custom product cards swiper
