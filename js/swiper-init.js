@@ -33,6 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
+  console.log("Initializing Swipers...");
+
   var productCardsSwiperMobile = new Swiper(".custom-product-cards-mobile", {
     slidesPerView: 2,
     spaceBetween: 20,
@@ -42,10 +44,11 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
+  console.log("Swiper initialized: ", productCardsSwiperMobile);
 
 
   // Initialize the custom product cards swiper
-  var productCardsSwiper = new Swiper(".custom-product-cards-mobile", {
+  var productCardsSwiper = new Swiper(".custom-product-cards", {
     slidesPerView: 4,
     spaceBetween: 20,
     // loop: true,
