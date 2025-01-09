@@ -6,7 +6,7 @@ function interactive_image_hover_shortcode()
 ?>
     <div class="interactive-image-hover-container">
         <!-- Background Image -->
-        <img class="layer jpg" id="background" src="https://demo.littlethingscute.com/wp-content/uploads/2025/01/ltc-product-banner.png" alt="Background">
+        <img class="layer jpg" id="background" src="https://littlethingscute.com/wp-content/uploads/2025/01/ltc-product-banner.png" alt="Background">
 
         <!-- Inline SVGs -->
         <svg class="layer svg" data-name="Diaries" data-link="/product-category/stationery/diaries/" viewBox="0 0 2240 1260" fill="none" xmlns="http://www.w3.org/2000/svg">
