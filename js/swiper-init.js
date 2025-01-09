@@ -33,16 +33,17 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
-
   var productCardsSwiperMobile = new Swiper(".custom-product-cards-mobile", {
     slidesPerView: 2,
     spaceBetween: 20,
     // loop: true,
-    // navigation: {
-    //   nextEl: ".swiper-button-next",
-    //   prevEl: ".swiper-button-prev",
-    // },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
   });
+
+
 
 
   // Initialize the custom product cards swiper
@@ -55,6 +56,8 @@ document.addEventListener('DOMContentLoaded', function () {
       prevEl: ".swiper-button-prev",
     },
   });
+
+  
   // Synchronize the two swipers
   homepageSwiper.on('slideChange', function () {
     productCardsSwiper.slideTo(homepageSwiper.activeIndex * 4);
@@ -65,13 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
-  homepageSwiper.on('slideChange', function () {
-    productCardsSwiperMobile.slideTo(homepageSwiper.activeIndex * 4);
-  });
-
-  productCardsSwiperMobile.on('slideChange', function () {
-    homepageSwiper.slideTo(Math.floor(productCardsSwiper.activeIndex / 4));
-  });
 
 
 
