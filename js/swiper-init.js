@@ -36,18 +36,16 @@ document.addEventListener('DOMContentLoaded', function () {
   var productCardsSwiperMobile = new Swiper(".custom-product-cards-mobile", {
     slidesPerView: 2,
     spaceBetween: 20,
-    // loop: true,
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+      nextEl: ".custom-mobile-next",
+      prevEl: ".custom-mobile-prev",
     },
   });
 
 
 
-
   // Initialize the custom product cards swiper
-  var productCardsSwiper = new Swiper(".custom-product-cards", {
+  var productCardsSwiper = new Swiper(".custom-product-cards-mobile", {
     slidesPerView: 4,
     spaceBetween: 20,
     // loop: true,

@@ -56,7 +56,7 @@ function custom_product_cards_mobile_shortcode()
     }
 
     echo '</div>'; // Close swiper-wrapper
-    echo '<div class="swiper-button-next"></div><div class="swiper-button-prev"></div>';
+    echo '<div class="custom-mobile-next"></div><div class="custom-mobile-prev"></div>';
     echo '</div>'; // Close swiper
 
     // Add custom CSS for the heart icon
