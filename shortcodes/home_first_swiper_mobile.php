@@ -82,6 +82,19 @@ function custom_product_cards_mobile_shortcode()
             color: red;
         }
     </style>
+    <script>
+
+var productCardsSwiperMobile = new Swiper(".custom-product-cards-mobile", {
+    slidesPerView: 2,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: ".custom-mobile-next",
+      prevEl: ".custom-mobile-prev",
+    },
+  });
+
+  console.log("Swiper initialized: ", productCardsSwiperMobile);
+    </script>
     <?php
 
     $output = ob_get_clean();
