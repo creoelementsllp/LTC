@@ -1,5 +1,44 @@
 document.addEventListener('DOMContentLoaded', function () {
+  let productCardsSwiper;
 
+  // Function to initialize the Swiper based on screen size
+  function initializeSwiper() {
+    const screenWidth = window.innerWidth;
+
+    // Destroy existing Swiper instance if it exists
+    if (productCardsSwiper) {
+      productCardsSwiper.destroy(true, true);
+    }
+
+    // Initialize Swiper with different slidesPerView based on screen width
+    if (screenWidth < 768) {
+      productCardsSwiper = new Swiper(".custom-product-cards", {
+        slidesPerView: 2,
+        spaceBetween: 20,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    } else {
+      productCardsSwiper = new Swiper(".custom-product-cards", {
+        slidesPerView: 4,
+        spaceBetween: 20,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    }
+  }
+
+  // Initialize the Swiper on page load
+  initializeSwiper();
+
+  // Reinitialize the Swiper on window resize
+  window.addEventListener('resize', function () {
+    initializeSwiper();
+  });
   var recent_swiper = new Swiper(".custom-recently-viewed-products", {
     slidesPerView: 2,
     spaceBetween: 20,
@@ -52,46 +91,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-
-document.addEventListener('DOMContentLoaded', function () {
-  let productCardsSwiper;
-
-  // Function to initialize the Swiper based on screen size
-  function initializeSwiper() {
-    const screenWidth = window.innerWidth;
-
-    // Destroy existing Swiper instance if it exists
-    if (productCardsSwiper) {
-      productCardsSwiper.destroy(true, true);
-    }
-
-    // Initialize Swiper with different slidesPerView based on screen width
-    if (screenWidth < 768) {
-      productCardsSwiper = new Swiper(".custom-product-cards", {
-        slidesPerView: 2,
-        spaceBetween: 20,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
-    } else {
-      productCardsSwiper = new Swiper(".custom-product-cards", {
-        slidesPerView: 4,
-        spaceBetween: 20,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
-    }
-  }
-
-  // Initialize the Swiper on page load
-  initializeSwiper();
-
-  // Reinitialize the Swiper on window resize
-  window.addEventListener('resize', function () {
-    initializeSwiper();
-  });
-});
