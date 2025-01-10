@@ -56,20 +56,22 @@ function swiper_video_shortcode()
         }
 
         .swiper.video-swiper .swiper-slide {
-    width: calc(18vw - 20px);
-    display: flex
-;
-    flex-direction: column;
-}
+            width: calc(18vw - 20px);
+            display: flex;
+            flex-direction: column;
+            background-color: #dee8e7;
+        }
+
         .swiper.video-swiper .swiper-slide img {
             border-radius: 20px;
         }
+
         .swiper-slide video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: none;
-            
+
             border-radius: 20px !important;
         }
 
@@ -101,87 +103,85 @@ function swiper_video_shortcode()
     </style>
 
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Preload videos in the background
-    const videos = document.querySelectorAll('.video-swiper video');
-    videos.forEach(video => {
-        video.load(); // Ensure all videos are prepared to play instantly
-    });
+        document.addEventListener('DOMContentLoaded', function() {
+            // Preload videos in the background
+            const videos = document.querySelectorAll('.video-swiper video');
+            videos.forEach(video => {
+                video.load(); // Ensure all videos are prepared to play instantly
+            });
 
-    var swiper = new Swiper(".video-swiper", {
-        slidesPerView: 2,
-        spaceBetween: 20,
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        breakpoints: {
-            640: {
+            var swiper = new Swiper(".video-swiper", {
                 slidesPerView: 2,
                 spaceBetween: 20,
-            },
-            768: {
-                slidesPerView: 4,
-                spaceBetween: 40,
-            },
-            1024: {
-                slidesPerView: 5,
-                spaceBetween: 50,
-            },
-        }
-    });
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 4,
+                        spaceBetween: 40,
+                    },
+                    1024: {
+                        slidesPerView: 5,
+                        spaceBetween: 50,
+                    },
+                }
+            });
 
-    document.querySelectorAll('.video-swiper .swiper-slide').forEach(slide => {
-        const video = slide.querySelector('video');
-        const thumbnail = slide.querySelector('img');
-        const playButton = slide.querySelector('.play-button');
+            document.querySelectorAll('.video-swiper .swiper-slide').forEach(slide => {
+                const video = slide.querySelector('video');
+                const thumbnail = slide.querySelector('img');
+                const playButton = slide.querySelector('.play-button');
 
-        // Add event listener for video load
-        video.addEventListener('canplay', () => {
-            // Ensure the thumbnail is hidden only when the video is ready
-            thumbnail.style.display = 'none';
-            video.style.display = 'block';
-        });
-
-        // Toggle video on click
-        slide.addEventListener('click', () => {
-            if (video.style.display === 'block' && !video.paused) {
-                video.pause();
-                playButton.style.display = 'flex';
-            } else {
-                // Show video only when it's ready
-                if (video.readyState >= 3) { // Ready state 3 ensures the video is ready to play
+                // Add event listener for video load
+                video.addEventListener('canplay', () => {
+                    // Ensure the thumbnail is hidden only when the video is ready
                     thumbnail.style.display = 'none';
                     video.style.display = 'block';
-                    video.play();
-                    playButton.style.display = 'none';
-                }
-            }
-        });             
+                });
 
-        // Hover functionality (larger screens only)
-        slide.addEventListener('mouseenter', () => {
-            if (window.innerWidth >= 768) {
-                if (video.readyState >= 3) {
-                    thumbnail.style.display = 'none';
-                    video.style.display = 'block';
-                    video.play();
-                    playButton.style.display = 'none';
-                }
-            }
+                // Toggle video on click
+                slide.addEventListener('click', () => {
+                    if (video.style.display === 'block' && !video.paused) {
+                        video.pause();
+                        playButton.style.display = 'flex';
+                    } else {
+                        // Show video only when it's ready
+                        if (video.readyState >= 3) { // Ready state 3 ensures the video is ready to play
+                            thumbnail.style.display = 'none';
+                            video.style.display = 'block';
+                            video.play();
+                            playButton.style.display = 'none';
+                        }
+                    }
+                });
+
+                // Hover functionality (larger screens only)
+                slide.addEventListener('mouseenter', () => {
+                    if (window.innerWidth >= 768) {
+                        if (video.readyState >= 3) {
+                            thumbnail.style.display = 'none';
+                            video.style.display = 'block';
+                            video.play();
+                            playButton.style.display = 'none';
+                        }
+                    }
+                });
+
+                slide.addEventListener('mouseleave', () => {
+                    if (window.innerWidth >= 768) {
+                        video.pause();
+                        playButton.style.display = 'flex';
+                    }
+                });
+            });
         });
-
-        slide.addEventListener('mouseleave', () => {
-            if (window.innerWidth >= 768) {
-                video.pause();
-                playButton.style.display = 'flex';
-            }
-        });
-    });
-});
-
-
-</script>
+    </script>
 <?php
     return ob_get_clean();
 }
