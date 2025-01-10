@@ -7,29 +7,34 @@ function swiper_video_shortcode()
     <div class="swiper video-swiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <img src="https://littlethingscute.com/wp-content/uploads/2025/01/ezgif-frame-001.jpg" alt="Thumbnail 1">
+                <img src="https://littlethingscute.com/wp-content/uploads/2025/01/ezgif-frame-001.jpg" alt="Luggage Tags">
                 <video src="https://littlethingscute.com/wp-content/uploads/2025/01/Untitled-video-Made-with-Clipchamp-13.mp4" preload="metadata" muted></video>
                 <div class="play-button"></div>
+                <a href="/product-category/travel-accessories/luggage-tags/" class="video-category-title">Luggage Tags</a>
             </div>
             <div class="swiper-slide">
-                <img src="https://littlethingscute.com/wp-content/uploads/2024/12/ltc-first-frame.jpg" alt="Thumbnail 2">
+                <img src="https://littlethingscute.com/wp-content/uploads/2024/12/ltc-first-frame.jpg" alt="Earrings">
                 <video src="https://littlethingscute.com/wp-content/uploads/2024/12/ltc-video.mp4" preload="metadata" muted></video>
                 <div class="play-button"></div>
+                <a href="/product-category/fashion-accessories/earrings/" class="video-category-title">Earrings</a>
             </div>
             <div class="swiper-slide">
-                <img src="https://littlethingscute.com/wp-content/uploads/2025/01/charms_frame.jpg" alt="Thumbnail 2">
+                <img src="https://littlethingscute.com/wp-content/uploads/2025/01/charms_frame.jpg" alt="Charms">
                 <video src="https://littlethingscute.com/wp-content/uploads/2025/01/charms.mp4" preload="metadata" muted></video>
                 <div class="play-button"></div>
+                <a href="/product-category/fashion-accessories/charms/" class="video-category-title">Charms</a>
             </div>
             <div class="swiper-slide">
-                <img src="https://littlethingscute.com/wp-content/uploads/2025/01/magnets_frame.jpg" alt="Thumbnail 2">
+                <img src="https://littlethingscute.com/wp-content/uploads/2025/01/magnets_frame.jpg" alt="Fridge Magnets">
                 <video src="https://littlethingscute.com/wp-content/uploads/2025/01/magnets.mp4" preload="metadata" muted></video>
                 <div class="play-button"></div>
+                <a href="/product-category/home-living/fridge-magnets/" class="video-category-title">Fridge Magnets</a>
             </div>
             <div class="swiper-slide">
-                <img src="https://littlethingscute.com/wp-content/uploads/2025/01/ltc-new-video.jpg" alt="Thumbnail 2">
+                <img src="https://littlethingscute.com/wp-content/uploads/2025/01/ltc-new-video.jpg" alt="hair accessories">
                 <video src="https://littlethingscute.com/wp-content/uploads/2025/01/LTC-video-new.mp4" preload="metadata" muted></video>
                 <div class="play-button"></div>
+                <a href="/product-category/fashion-accessories/hair-accessories/" class="video-category-title">Hair Accessories</a>
             </div>
         </div>
         <div class="swiper-pagination"></div>
