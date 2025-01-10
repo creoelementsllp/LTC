@@ -84,7 +84,7 @@ function custom_recently_viewed_products_shortcode($atts)
                     <span class="heart-icon">&#9825;</span>
                 </div>';
             echo woocommerce_get_product_thumbnail();
-            echo '<h2 class="product-title">' . get_the_title() . '</h2>';
+            echo '<h3 class="product-title">' . get_the_title() . '</h3>';
             echo '<div class="product-price">' . $product->get_price_html() . '</div>';
             echo '</a>'; // Close card
         }

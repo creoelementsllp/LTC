@@ -62,7 +62,7 @@ function latest_arrivals_shortcode($atts)
             
             
             echo woocommerce_get_product_thumbnail();
-            echo '<h2 class="product-title">' . get_the_title() . '</h2>';
+            echo '<h3 class="product-title">' . get_the_title() . '</h3>';
             echo '<div class="product-price">' . $product->get_price_html() . '</div>';
             echo '</a>';
 
