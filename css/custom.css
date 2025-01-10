@@ -63,7 +63,7 @@ img.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail {
     position: relative;
 }
 
-h2.product-title {
+h3.product-title {
     font-size: 1.75rem;
     font-weight: normal;
     color: #46545f;
@@ -71,7 +71,7 @@ h2.product-title {
 }
 
 
-h2.product-title {
+h3.product-title {
     padding: 10px 0px 0px 5px;
     margin-bottom: 0px;
 }
