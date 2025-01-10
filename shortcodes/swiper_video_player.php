@@ -56,16 +56,21 @@ function swiper_video_shortcode()
         }
 
         .swiper.video-swiper .swiper-slide {
-
-            width: calc(18vw - 20px);
+    width: calc(18vw - 20px);
+    display: flex
+;
+    flex-direction: column;
+}
+        .swiper.video-swiper .swiper-slide img {
+            border-radius: 20px;
         }
-
         .swiper-slide video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: none;
-
+            
+            border-radius: 20px !important;
         }
 
         .play-button {
