@@ -1,53 +1,26 @@
-const CACHE_NAME = 'creo-pwa-cache-v1';
-const assetsToCache = [
-    '/',
-    '/index.html',
-    '/wp-content/themes/oceanwp/style.css',
-    '/offline.html',
-    '/wp-content/plugins/creo/icon-192x192.png',
-    '/wp-content/plugins/creo/icon-512x512.png',
-    '/wp-content/plugins/creo/js/sw-register.js',
-    '/wp-content/plugins/creo/assets.json',
-]; 
-
-// Install event: Caches essential files
+// Install event: Keep this minimal, as we aren't caching assets
 self.addEventListener('install', (event) => {
-    event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => {
-            return cache.addAll(assetsToCache);
-        })
-    );
+    console.log('Service Worker installed');
+    self.skipWaiting(); // Activate the service worker immediately
 });
 
-// Fetch event: Serve cached files or fetch from network if not in cache
+// Activate event: Keep this minimal
+self.addEventListener('activate', (event) => {
+    console.log('Service Worker activated');
+    return self.clients.claim(); // Take control of uncontrolled clients
+});
+
+// Fetch event: Always fetch from the network, with an offline fallback
 self.addEventListener('fetch', (event) => {
     event.respondWith(
-        caches.match(event.request).then((cachedResponse) => {
-            if (cachedResponse) {
-                return cachedResponse; // Serve cached content if available
+        fetch(event.request).catch(() => {
+            // Serve an offline fallback page if the user is offline
+            if (event.request.mode === 'navigate') {
+                return caches.match('/offline.html'); // Ensure offline.html exists in your project
             }
-
-            // If no cache is found, return the offline page
-            return caches.match('/offline.html');
-        }).catch(() => {
-            // If there's an issue with cache or fetch, serve the offline page as a fallback
-            return caches.match('/offline.html');
-        })
-    );
-});
-
-// Activate event: Clean up old caches
-self.addEventListener('activate', (event) => {
-    const cacheWhitelist = [CACHE_NAME];
-    event.waitUntil(
-        caches.keys().then((cacheNames) => {
-            return Promise.all(
-                cacheNames.map((cacheName) => {
-                    if (!cacheWhitelist.includes(cacheName)) {
-                        return caches.delete(cacheName); // Delete old caches
-                    }
-                })
-            );
+            return new Response('You are offline.', {
+                headers: { 'Content-Type': 'text/plain' }
+            });
         })
     );
 });
