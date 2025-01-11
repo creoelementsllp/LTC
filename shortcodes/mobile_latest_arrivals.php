@@ -76,7 +76,47 @@ function mobile_latest_arrivals_shortcode($atts)
 
         // Add the "See All Products" button in a new row
         echo '<div class="row see-more-row">';
-        echo '<a href="' . get_permalink(woocommerce_get_page_id('shop')) . '" class="see-more-btn product-card see-more-card">See All Products</a>';
+        echo '<a href="' . get_permalink(woocommerce_get_page_id('shop')) . '" class="see-more-btn product-card see-more-card">See All Products';
+        
+                // Fetch the remaining products for the gallery (up to 4)
+                $remaining_args = array(
+                    'post_type' => 'product',
+                    'posts_per_page' => 2, // Limit to 4 products for the gallery
+                    'post_status' => 'publish',
+                    'offset' => $atts['limit'], // Skip the already displayed products
+                );
+
+                if (!empty($atts['category'])) {
+                    $remaining_args['tax_query'] = array(
+                        array(
+                            'taxonomy' => 'product_cat',
+                            'field' => 'slug',
+                            'terms' => $atts['category'],
+                        ),
+                    );
+                }
+
+                $remaining_query = new WP_Query($remaining_args);
+
+                if ($remaining_query->have_posts()) {
+                    echo '<div class="product-gallery">';
+                    // echo '<h3>Other Products</h3>'; // Gallery heading
+                    echo '<div class="gallery-row">';
+
+                    while ($remaining_query->have_posts()) {
+                        $remaining_query->the_post();
+
+                        echo woocommerce_get_product_thumbnail();
+                    }
+
+                    echo '</div>'; // Close gallery row
+                    echo '</div>'; // Close product-gallery container
+                }
+
+                wp_reset_postdata();
+                
+                // End "See All Products" card
+                echo '</a>';
         echo '</div>'; // Close the row
 
         echo '</div>'; // Close the container

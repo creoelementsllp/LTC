@@ -174,7 +174,9 @@ td.product-thumbnail img.attachment-woocommerce_thumbnail.size-woocommerce_thumb
 
 @media screen and (max-width: 768px) {
     /* For mobile phones: */
-
+    a.see-more-btn.product-card.see-more-card {
+        width: 100%;
+    }
 
     img.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail {
         height: calc(50vw - 20px) !important;
