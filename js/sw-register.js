@@ -1,15 +1,21 @@
 let deferredPrompt;
 
+// Constants for localStorage key and max dismiss count
+const DISMISS_COUNT_KEY = "pwaPopupDismissCount";
+const MAX_DISMISS_COUNT = 2;
+
+// Helper function to check dismiss count
+function shouldShowPopup() {
+    const dismissCount = parseInt(localStorage.getItem(DISMISS_COUNT_KEY)) || 0;
+    return dismissCount < MAX_DISMISS_COUNT;
+}
+
 // Register the service worker
-if ('serviceWorker' in navigator) {
+if ("serviceWorker" in navigator) {
     navigator.serviceWorker
-        .register('/wp-content/plugins/creo/js/sw.js')
-        .then(() => {
-            console.log('Service Worker Registered');
-        })
-        .catch((error) => {
-            console.error('Service Worker Registration Failed:', error);
-        });
+        .register("/wp-content/plugins/creo/js/sw.js")
+        .then(() => console.log("Service Worker Registered"))
+        .catch((error) => console.error("Service Worker Registration Failed:", error));
 }
 
 // Detect if the user is on iOS
@@ -18,14 +24,14 @@ function isIOS() {
 }
 
 // Show the install prompt for Android/Windows or iOS instructions
-if (isIOS()) {
-    window.addEventListener('load', () => {
+if (isIOS() && shouldShowPopup()) {
+    window.addEventListener("load", () => {
         const installPopup = document.getElementById("install-pwa-popup-ios");
         if (installPopup) {
             installPopup.style.display = "block";
         }
     });
-} else {
+} else if (shouldShowPopup()) {
     window.addEventListener("beforeinstallprompt", (e) => {
         // Prevent the default mini-infobar from appearing
         e.preventDefault();
@@ -34,7 +40,7 @@ if (isIOS()) {
         // Show the install PWA popup
         const installPopup = document.getElementById("install-pwa-popup");
         if (installPopup) {
-            installPopup.style.display = "block"; // Make the popup visible
+            installPopup.style.display = "block";
         }
     });
 }
@@ -46,15 +52,14 @@ document.getElementById("install-pwa-button")?.addEventListener("click", () => {
         deferredPrompt.prompt();
 
         // Wait for the user's response
-        deferredPrompt.userChoice
-            .then((choiceResult) => {
-                if (choiceResult.outcome === "accepted") {
-                    console.log("User accepted the install prompt");
-                } else {
-                    console.log("User dismissed the install prompt");
-                }
-                deferredPrompt = null; // Reset the deferred prompt
-            });
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === "accepted") {
+                console.log("User accepted the install prompt");
+            } else {
+                console.log("User dismissed the install prompt");
+            }
+            deferredPrompt = null; // Reset the deferred prompt
+        });
 
         // Hide the popup after interaction
         const installPopup = document.getElementById("install-pwa-popup");
@@ -64,17 +69,23 @@ document.getElementById("install-pwa-button")?.addEventListener("click", () => {
     }
 });
 
-// Handle dismiss button clicks to hide the popup
+// Handle dismiss button clicks to hide the popup and increment dismiss count
 document.getElementById("dismiss-pwa-popup")?.addEventListener("click", () => {
+    const dismissCount = parseInt(localStorage.getItem(DISMISS_COUNT_KEY)) || 0;
+    localStorage.setItem(DISMISS_COUNT_KEY, dismissCount + 1);
+
     const installPopup = document.getElementById("install-pwa-popup");
     if (installPopup) {
-        installPopup.style.display = "none"; // Hide the popup if dismissed
+        installPopup.style.display = "none";
     }
 });
 
 document.getElementById("dismiss-pwa-popup-ios")?.addEventListener("click", () => {
+    const dismissCount = parseInt(localStorage.getItem(DISMISS_COUNT_KEY)) || 0;
+    localStorage.setItem(DISMISS_COUNT_KEY, dismissCount + 1);
+
     const installPopupIOS = document.getElementById("install-pwa-popup-ios");
     if (installPopupIOS) {
-        installPopupIOS.style.display = "none"; // Hide the iOS-specific popup if dismissed
+        installPopupIOS.style.display = "none";
     }
 });

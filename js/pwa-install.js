@@ -1,6 +1,16 @@
 let deferredPrompt;
+const DISMISS_COUNT_KEY = "pwaPopupDismissCount";
+const MAX_DISMISS_COUNT = 2;
+
+// Helper function to check dismiss count
+function shouldShowPopup() {
+    const dismissCount = parseInt(localStorage.getItem(DISMISS_COUNT_KEY)) || 0;
+    return dismissCount < MAX_DISMISS_COUNT;
+}
 
 window.addEventListener("beforeinstallprompt", (event) => {
+    if (!shouldShowPopup()) return;
+
     // Prevent the default mini-infobar from appearing
     event.preventDefault();
     deferredPrompt = event;
@@ -38,6 +48,13 @@ window.addEventListener("beforeinstallprompt", (event) => {
         });
 
         // Remove the button after interaction
+        installButton.remove();
+    });
+
+    // Handle dismissing the button
+    installButton.addEventListener("contextmenu", () => {
+        const dismissCount = parseInt(localStorage.getItem(DISMISS_COUNT_KEY)) || 0;
+        localStorage.setItem(DISMISS_COUNT_KEY, dismissCount + 1);
         installButton.remove();
     });
 });
