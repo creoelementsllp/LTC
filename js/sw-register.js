@@ -24,27 +24,25 @@ function isIOS() {
 }
 
 // Show the install prompt for Android/Windows or iOS instructions
-if (shouldShowPopup()) {
-    if (isIOS()) {
-        window.addEventListener("load", () => {
-            const installPopup = document.getElementById("install-pwa-popup-ios");
-            if (installPopup) {
-                installPopup.style.display = "block";
-            }
-        });
-    } else {
-        window.addEventListener("beforeinstallprompt", (e) => {
-            // Prevent the default mini-infobar from appearing
-            e.preventDefault();
-            deferredPrompt = e;
+if (isIOS() && shouldShowPopup()) {
+    window.addEventListener("load", () => {
+        const installPopup = document.getElementById("install-pwa-popup-ios");
+        if (installPopup) {
+            installPopup.style.display = "block";
+        }
+    });
+} else if (shouldShowPopup()) {
+    window.addEventListener("beforeinstallprompt", (e) => {
+        // Prevent the default mini-infobar from appearing
+        e.preventDefault();
+        deferredPrompt = e;
 
-            // Show the install PWA popup
-            const installPopup = document.getElementById("install-pwa-popup");
-            if (installPopup) {
-                installPopup.style.display = "block";
-            }
-        });
-    }
+        // Show the install PWA popup
+        const installPopup = document.getElementById("install-pwa-popup");
+        if (installPopup) {
+            installPopup.style.display = "block";
+        }
+    });
 }
 
 // Handle "Install" button click for Android/Windows
