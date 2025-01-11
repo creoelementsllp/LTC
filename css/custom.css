@@ -180,7 +180,7 @@ td.product-thumbnail img.attachment-woocommerce_thumbnail.size-woocommerce_thumb
     a.see-more-btn.product-card.see-more-card {
         width: 100%;
     }
-    a.see-more-btn.product-card.see-more-card  img.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail {
+    a.see-more-btn.product-card.see-more-card img.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail {
         width: calc(50vw - 40px) !important;
         height: calc(50vw - 40px) !important;
     }
